@@ -1,0 +1,7 @@
+from django.views import generic
+from django.http import HttpRequest
+
+
+# class ViewName(generic.View):
+#     def get(self, request: HttpRequest, *args, **kwargs):
+#         param = kwargs.get('param')

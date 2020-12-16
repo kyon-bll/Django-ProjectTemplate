@@ -1,0 +1,106 @@
+import sys
+import os
+
+from .default_settings import *  # noqa
+
+# =======================================
+# custom settings
+# =======================================
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+INSTALLED_APPS += [
+]
+
+ALLOWED_HOSTS = ['*']
+
+# AUTH_USER_MODEL = 'players.Player'
+
+# LOGIN_URL = 'blog:login'
+# LOGIN_REDIRECT_URL = 'blog:index'
+# LOGOUT_REDIRECT_URL = "blog:login"
+
+# Add extra path
+sys.path.insert(0, os.fspath(BASE_DIR / 'apps'))
+TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
+
+# DB 情報
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'db',
+#         'PORT': 5432,
+#     }
+# }
+
+# メディアファイル
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
+# 静的ファイル
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = (
+    BASE_DIR / "static",
+)
+
+# Time Zone
+TIME_ZONE = 'Asia/Tokyo'
+USE_TZ = False
+
+# 言語設定
+# LANGUAGE_CODE = 'ja'
+
+# django-cors-headers
+CORS_ORIGIN_ALLOW_ALL = True
+
+MIDDLEWARE += [
+    # django-cors-headers
+    # 'corsheaders.middleware.CorsMiddleware'
+]
+
+
+# ログ設定
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'local': {
+            'format': '\n%(asctime)s [%(levelname)s] %(pathname)s:%(lineno)d\n%(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'local',
+        },
+    },
+    'loggers': {
+        # コード中に明記したログ
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        # Djangoのエラー・警告・開発WEBサーバのアクセスログ
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        # 実行SQL
+        # 'django.db.backends': {
+        #     'handlers': ['console'],
+        #     'level': 'DEBUG',
+        #     'propagate': False,
+        # },
+    }
+}

@@ -1,0 +1,5 @@
+from django.apps import AppConfig
+
+
+class {% templatetag openvariable %} camel_case_app_name {% templatetag closevariable %}Config(AppConfig):
+    name = '{% templatetag openvariable %} app_name {% templatetag closevariable %}'

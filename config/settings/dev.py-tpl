@@ -1,0 +1,19 @@
+'''
+開発サーバー上で local.py に mv して使おう
+'''
+
+from .base import *  # noqa
+
+DEBUG = True
+SECRET_KEY = '{{ secret_key }}'
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'testdb01',
+#         'USER': 'kyon',
+#         'PASSWORD': 'password',
+#         'HOST': 'rds-name.hash.ap-northeast-1.rds.amazonaws.com',
+#         'PORT': 5432,
+#     }
+# }

@@ -1,7 +1,7 @@
 import sys
 import os
 
-from .default_settings import *  # noqa
+from .default import *  # noqa
 
 # =======================================
 # custom settings

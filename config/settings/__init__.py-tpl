@@ -1,6 +1,4 @@
-from .production_settings import *  # noqa
-
 try:
-    from .local_settings import *  # noqa
-except:
-    pass
+    from .production_secret import *  # noqa
+except ModuleNotFoundError:
+    from .local import *  # noqa

@@ -1,4 +1,4 @@
-from .custom_settings import *  # noqa
+from .base import *  # noqa
 
 DEBUG = True
 SECRET_KEY = '{{ secret_key }}'
